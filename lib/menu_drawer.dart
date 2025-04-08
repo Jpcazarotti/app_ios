@@ -1,3 +1,4 @@
+import 'package:app_ios/home_page.dart';
 import 'package:flutter/material.dart';
 
 class MenuDrawer extends StatelessWidget {
@@ -8,8 +9,8 @@ class MenuDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const [
-          DrawerHeader(
+        children: [
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: Color(0xff007aff),
             ),
@@ -21,11 +22,19 @@ class MenuDrawer extends StatelessWidget {
           Card(
             elevation: 0.4,
             child: ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Perfil"),
+              leading: const Icon(Icons.home_rounded),
+              title: const Text("Home"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
             ),
           ),
-          Card(
+          const Card(
             elevation: 0.4,
             child: ListTile(
               leading: Icon(Icons.person),
