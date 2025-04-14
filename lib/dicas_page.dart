@@ -1,17 +1,16 @@
 import 'package:app_ios/faq_page.dart';
 import 'package:app_ios/menu_drawer.dart';
-import 'package:app_ios/video_1.dart';
 import 'package:flutter/material.dart';
 
-class EtapasPage extends StatelessWidget {
-  const EtapasPage({super.key});
+class DicasPage extends StatelessWidget {
+  const DicasPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Etapas Visuais da Publicação",
+          "Dicas de Publicação",
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -36,79 +35,67 @@ class EtapasPage extends StatelessWidget {
         ],
       ),
       drawer: const MenuDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(vertical: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text(
-                'Registre-se no site Apple Developer',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Video1(),
-                    ),
-                  );
-                },
-                child: const Image(
-                  image: AssetImage('assets/imagem6.png'),
-                  width: 100,
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'Crie o app e exporte o IPA',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Image(
-                image: AssetImage('assets/imagem5.png'),
+              Text('Use ícones com tamanhos corretos',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  )),
+              Image(
+                image: AssetImage('assets/imagem3.png'),
                 width: 100,
               ),
-              const SizedBox(
+              SizedBox(
                 height: 20,
               ),
-              const Text(
-                'Teste com os amigos pelo TestFlight',
+              Text(
+                'Capriche na descrição e nas imagens do App',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
                 ),
               ),
-              const Image(
-                image: AssetImage('assets/imagem4.png'),
-                width: 100,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'Subir para App Store Connect',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 5),
+              Padding(
+                padding: EdgeInsets.only(left: 40),
                 child: Image(
-                  image: AssetImage('assets/icon-app.png'),
+                  image: AssetImage('assets/imagem2.png'),
                   width: 100,
                 ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Adicione suas políticas de privacidade',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF000000),
+                ),
+              ),
+              Image(
+                image: AssetImage('assets/imagem1.png'),
+                width: 100,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Revise todas as regras da Apple antes de enviar',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF000000),
+                ),
+              ),
+              Image(
+                image: AssetImage('assets/imagem.png'),
+                width: 100,
               ),
             ],
           ),

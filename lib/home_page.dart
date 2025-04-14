@@ -106,6 +106,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
         ),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -1,3 +1,5 @@
+import 'package:app_ios/dicas_page.dart';
+import 'package:app_ios/etapas_page.dart';
 import 'package:app_ios/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -10,19 +12,21 @@ class MenuDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Color(0xff007aff),
+          DrawerHeader(
+            decoration: const BoxDecoration(
+              color: Colors.black26,
             ),
-            child: Icon(
-              Icons.apple,
-              size: 80,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                'assets/icon-app.png',
+              ),
             ),
           ),
           Card(
             elevation: 0.4,
             child: ListTile(
-              leading: const Icon(Icons.home_rounded),
+              leading: const Icon(Icons.home),
               title: const Text("Home"),
               onTap: () {
                 Navigator.push(
@@ -34,11 +38,34 @@ class MenuDrawer extends StatelessWidget {
               },
             ),
           ),
-          const Card(
+          Card(
             elevation: 0.4,
             child: ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Perfil"),
+              leading: const Icon(Icons.stacked_line_chart),
+              title: const Text("Etapas Visuais"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EtapasPage(),
+                  ),
+                );
+              },
+            ),
+          ),
+          Card(
+            elevation: 0.4,
+            child: ListTile(
+              leading: const Icon(Icons.lightbulb_outline),
+              title: const Text("Dicas"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DicasPage(),
+                  ),
+                );
+              },
             ),
           ),
         ],
