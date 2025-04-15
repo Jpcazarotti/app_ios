@@ -108,71 +108,86 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Stack(
         children: [
-          Center(
-            child: SizedBox(
-              width: 200,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Image.asset('assets/app-store.png'),
-                  AnimatedBuilder(
-                    animation: _controller,
-                    builder: (context, child) {
-                      return Positioned(
-                        bottom: _positionAnimation.value,
-                        right: -32,
-                        child: Opacity(
-                          opacity: _opacityAnimation.value,
-                          child: child!,
-                        ),
-                      );
-                    },
-                    child: Image.asset(
-                      'assets/seta.png',
-                      width: 70,
-                    ),
-                  ),
-                ],
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/back.jpg'),
+                fit: BoxFit.cover,
               ),
             ),
           ),
-          AnimatedBuilder(
-            animation: _shakeController,
-            builder: (context, child) {
-              return Transform.translate(
-                offset: _shakeAnimation.value,
-                child: child,
-              );
-            },
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EtapasPage(),
+          Container(
+            color: Colors.black.withOpacity(0.5),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Center(
+                child: SizedBox(
+                  width: 200,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Image.asset('assets/app-store.png'),
+                      AnimatedBuilder(
+                        animation: _controller,
+                        builder: (context, child) {
+                          return Positioned(
+                            bottom: _positionAnimation.value,
+                            right: -32,
+                            child: Opacity(
+                              opacity: _opacityAnimation.value,
+                              child: child!,
+                            ),
+                          );
+                        },
+                        child: Image.asset(
+                          'assets/seta.png',
+                          width: 70,
+                        ),
+                      ),
+                    ],
                   ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                elevation: 4,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 15,
                 ),
               ),
-              child: const Text(
-                "Começar Aprendizado",
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w700,
+              AnimatedBuilder(
+                animation: _shakeController,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: _shakeAnimation.value,
+                    child: child,
+                  );
+                },
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EtapasPage(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                    elevation: 4,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 15,
+                    ),
+                  ),
+                  child: const Text(
+                    "Começar Aprendizado",
+                    style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ],
       ),

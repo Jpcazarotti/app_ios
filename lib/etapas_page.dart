@@ -1,6 +1,9 @@
 import 'package:app_ios/faq_page.dart';
 import 'package:app_ios/menu_drawer.dart';
 import 'package:app_ios/video_1.dart';
+import 'package:app_ios/video_2.dart';
+import 'package:app_ios/video_3.dart';
+import 'package:app_ios/video_4.dart';
 import 'package:flutter/material.dart';
 
 class EtapasPage extends StatelessWidget {
@@ -58,9 +61,11 @@ class EtapasPage extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Image(
-                  image: AssetImage('assets/imagem6.png'),
-                  width: 100,
+                child: const Card(
+                  child: Image(
+                    image: AssetImage('assets/imagem6.png'),
+                    width: 100,
+                  ),
                 ),
               ),
               const SizedBox(
@@ -73,9 +78,19 @@ class EtapasPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Image(
-                image: AssetImage('assets/imagem5.png'),
-                width: 100,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Video2(),
+                    ),
+                  );
+                },
+                child: const Image(
+                  image: AssetImage('assets/imagem5.png'),
+                  width: 100,
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -88,9 +103,19 @@ class EtapasPage extends StatelessWidget {
                   color: Color(0xFF000000),
                 ),
               ),
-              const Image(
-                image: AssetImage('assets/imagem4.png'),
-                width: 100,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Video3(),
+                    ),
+                  );
+                },
+                child: const Image(
+                  image: AssetImage('assets/imagem4.png'),
+                  width: 100,
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -103,11 +128,21 @@ class EtapasPage extends StatelessWidget {
                   color: Color(0xFF000000),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 5),
-                child: Image(
-                  image: AssetImage('assets/icon-app.png'),
-                  width: 100,
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Video4(),
+                      ),
+                    );
+                  },
+                  child: const Image(
+                    image: AssetImage('assets/icon-app.png'),
+                    width: 100,
+                  ),
                 ),
               ),
             ],

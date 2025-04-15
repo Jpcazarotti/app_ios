@@ -45,7 +45,7 @@ class DicasPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                  )),
+                  ),),
               Image(
                 image: AssetImage('assets/imagem3.png'),
                 width: 100,

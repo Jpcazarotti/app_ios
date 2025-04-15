@@ -14,7 +14,7 @@ class MenuDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
-              color: Colors.black26,
+              color: Color(0xFFBAD8F8),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8),

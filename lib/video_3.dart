@@ -1,15 +1,14 @@
-import 'package:app_ios/video_2.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class Video1 extends StatefulWidget {
-  const Video1({super.key});
+class Video3 extends StatefulWidget {
+  const Video3({super.key});
 
   @override
-  State<Video1> createState() => _Video1State();
+  State<Video3> createState() => _Video3State();
 }
 
-class _Video1State extends State<Video1> {
+class _Video3State extends State<Video3> {
   late YoutubePlayerController _controller;
 
   @override
@@ -17,7 +16,7 @@ class _Video1State extends State<Video1> {
     super.initState();
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(
-          'https://www.youtube.com/watch?v=yCOwoylY7e8')!,
+          'https://www.youtube.com/watch?v=ME4_RHCaCAk')!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
@@ -41,7 +40,7 @@ class _Video1State extends State<Video1> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Apple Developer",
+          "Exportar o App em Formato IPA",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -69,7 +68,7 @@ class _Video1State extends State<Video1> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Text(
-              "Criando a conta Desenvolvedor Apple",
+              "Exportar IPA e instalar com o Impactor",
               style: TextStyle(
                 fontSize: 21,
                 fontWeight: FontWeight.w600,
@@ -92,14 +91,16 @@ class _Video1State extends State<Video1> {
               height: 300,
               child: ListView(
                 children: [
-                  listItem("Criar um ID Apple (Apple ID)"),
-                  listItem("Acessar o site do Apple Developer"),
-                  listItem("Iniciar o processo de inscrição"),
-                  listItem("Escolher o tipo de conta"),
-                  listItem("Preencher as informações solicitadas"),
-                  listItem("Aceitar os termos e condições"),
-                  listItem("Pagar a taxa anual (99 USD)"),
-                  listItem("Aguardar aprovação"),
+                  listItem("Rodar o comando:\n 'flutter build ios --release'"),
+                  listItem("Abrir o projeto no Xcode (.xcworkspace)"),
+                  listItem("Selecionar o esquema correto do app"),
+                  listItem("Ir em Product > Archive para gerar o build"),
+                  listItem("Aguardar o Organizer abrir automaticamente"),
+                  listItem("Clicar em 'Distribute App'"),
+                  listItem(
+                      "Escolher o método de distribuição (App Store, Ad Hoc etc)"),
+                  listItem("Seguir as etapas e salvar o arquivo .IPA"),
+                  listItem("Usar o IPA para publicar ou distribuir o app"),
                 ],
               ),
             ),
@@ -122,14 +123,7 @@ class _Video1State extends State<Video1> {
             ],
           ),
           child: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Video2(),
-                ),
-              );
-            },
+            onPressed: () {},
             backgroundColor: const Color(0xff007aff),
             foregroundColor: const Color(0xFF24333D),
             elevation: 0,

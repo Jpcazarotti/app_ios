@@ -13,8 +13,8 @@ void main() {
           foregroundColor: Colors.white,
         ),
         expansionTileTheme: const ExpansionTileThemeData(
-          backgroundColor: Colors.black12,
-          collapsedBackgroundColor: Colors.black12,
+          backgroundColor: Color(0xFF96C6FA),
+          collapsedBackgroundColor: Color(0xFFBAD8F8),
           textColor: Colors.black,
           collapsedTextColor: Colors.black,
           iconColor: Colors.black,
