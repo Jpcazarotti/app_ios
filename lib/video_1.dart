@@ -1,6 +1,7 @@
 import 'package:app_ios/video_2.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:flutter/services.dart';
 
 class Video1 extends StatefulWidget {
   const Video1({super.key});
@@ -11,6 +12,7 @@ class Video1 extends StatefulWidget {
 
 class _Video1State extends State<Video1> {
   late YoutubePlayerController _controller;
+  bool _isFullScreen = false;
 
   @override
   void initState() {
@@ -28,6 +30,15 @@ class _Video1State extends State<Video1> {
         enableCaption: true,
       ),
     );
+
+    _controller.addListener(() {
+      final isFullScreenNow = _controller.value.isFullScreen;
+      if (isFullScreenNow != _isFullScreen) {
+        setState(() {
+          _isFullScreen = isFullScreenNow;
+        });
+      }
+    });
   }
 
   @override
@@ -39,109 +50,131 @@ class _Video1State extends State<Video1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Apple Developer",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: YoutubePlayer(
-              controller: _controller,
-              showVideoProgressIndicator: true,
-              progressIndicatorColor: Colors.red,
-              progressColors: const ProgressBarColors(
-                playedColor: Color(0xff007aff),
-                handleColor: Color(0xff007aff),
-                bufferedColor: Color(0xFF99BCE2),
-                backgroundColor: Colors.white38,
+      appBar: _isFullScreen
+          ? null
+          : AppBar(
+              title: const Text(
+                "Apple Developer",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              centerTitle: true,
+            ),
+      body: OrientationBuilder(builder: (context, orientation) {
+        final isLandscape = orientation == Orientation.landscape;
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (isLandscape) {
+            SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+          } else {
+            SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+          }
+        });
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: YoutubePlayer(
+                controller: _controller,
+                showVideoProgressIndicator: true,
+                progressIndicatorColor: Colors.red,
+                progressColors: const ProgressBarColors(
+                  playedColor: Color(0xff007aff),
+                  handleColor: Color(0xff007aff),
+                  bufferedColor: Color(0xFF99BCE2),
+                  backgroundColor: Colors.white38,
+                ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Text(
-              "Criando a conta Desenvolvedor Apple",
-              style: TextStyle(
-                fontSize: 21,
-                fontWeight: FontWeight.w600,
+            if (!isLandscape) ...[
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Text(
+                  "Criando a conta Desenvolvedor Apple",
+                  style: TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 35),
-            child: Text(
-              "Pontos Importantes:",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 35),
+                child: Text(
+                  "Pontos Importantes:",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35),
-            child: SizedBox(
-              height: 300,
-              child: ListView(
-                children: [
-                  listItem("Criar um ID Apple (Apple ID)"),
-                  listItem("Acessar o site do Apple Developer"),
-                  listItem("Iniciar o processo de inscrição"),
-                  listItem("Escolher o tipo de conta"),
-                  listItem("Preencher as informações solicitadas"),
-                  listItem("Aceitar os termos e condições"),
-                  listItem("Pagar a taxa anual (99 USD)"),
-                  listItem("Aguardar aprovação"),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Container(
-          width: 75,
-          height: 75,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(30)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black45,
-                blurRadius: 6,
-                offset: Offset(0, 2),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: SizedBox(
+                  height: 300,
+                  child: ListView(
+                    children: [
+                      listItem("Criar um ID Apple (Apple ID)"),
+                      listItem("Acessar o site do Apple Developer"),
+                      listItem("Iniciar o processo de inscrição"),
+                      listItem("Escolher o tipo de conta"),
+                      listItem("Preencher as informações solicitadas"),
+                      listItem("Aceitar os termos e condições"),
+                      listItem("Pagar a taxa anual (582 reias)"),
+                      listItem("Aguardar aprovação"),
+                    ],
+                  ),
+                ),
               ),
             ],
-          ),
-          child: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Video2(),
+          ],
+        );
+      }),
+      floatingActionButton: AnimatedOpacity(
+        duration: const Duration(milliseconds: 300),
+        opacity: _isFullScreen ? 0.0 : 1.0,
+        child: !_isFullScreen
+            ? Padding(
+                padding: const EdgeInsets.all(15),
+                child: Container(
+                  width: 75,
+                  height: 75,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black45,
+                        blurRadius: 6,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Video2(),
+                        ),
+                      );
+                    },
+                    backgroundColor: const Color(0xff007aff),
+                    foregroundColor: const Color(0xFF24333D),
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      size: 60,
+                    ),
+                  ),
                 ),
-              );
-            },
-            backgroundColor: const Color(0xff007aff),
-            foregroundColor: const Color(0xFF24333D),
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: const Icon(
-              Icons.keyboard_arrow_right_rounded,
-              size: 60,
-            ),
-          ),
-        ),
+              )
+            : null,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );

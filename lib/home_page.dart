@@ -60,24 +60,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     _shakeAnimation = TweenSequence<Offset>([
       TweenSequenceItem(
-          tween: Tween(begin: Offset.zero, end: const Offset(-5, -5)),
+          tween: Tween(begin: Offset.zero, end: const Offset(-2, -2)),
           weight: 1),
       TweenSequenceItem(
-          tween: Tween(begin: const Offset(-5, -5), end: const Offset(5, 5)),
+          tween: Tween(begin: const Offset(-2, -2), end: const Offset(2, 2)),
           weight: 2),
       TweenSequenceItem(
-          tween: Tween(begin: const Offset(5, 5), end: const Offset(-5, 5)),
+          tween: Tween(begin: const Offset(2, 2), end: const Offset(-2, 2)),
           weight: 2),
       TweenSequenceItem(
-          tween: Tween(begin: const Offset(-5, 5), end: const Offset(5, -5)),
+          tween: Tween(begin: const Offset(-2, 2), end: const Offset(2, -2)),
           weight: 2),
       TweenSequenceItem(
-          tween: Tween(begin: const Offset(5, -5), end: Offset.zero),
+          tween: Tween(begin: const Offset(2, -2), end: Offset.zero),
           weight: 1),
     ]).animate(
       CurvedAnimation(
         parent: _shakeController,
-        curve: Curves.linear,
+        curve: Curves.bounceInOut,
       ),
     );
 
@@ -97,29 +97,33 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Publicando na App Store",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-      ),
       body: Stack(
         children: [
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/back.jpg'),
+                image: AssetImage('assets/wallpaper.jpeg'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withOpacity(0.7),
+          ),
+          const Positioned(
+            top: 60,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                "Publicando na App Store",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -170,7 +174,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: const Color(0xff007aff),
                     foregroundColor: Colors.white,
                     elevation: 4,
                     padding: const EdgeInsets.symmetric(

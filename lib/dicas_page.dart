@@ -35,69 +35,73 @@ class DicasPage extends StatelessWidget {
         ],
       ),
       drawer: const MenuDrawer(),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 20),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text('Use ícones com tamanhos corretos',
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Use ícones com tamanhos corretos',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                  ),),
-              Image(
-                image: AssetImage('assets/imagem3.png'),
-                width: 100,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Capriche na descrição e nas imagens do App',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 40),
-                child: Image(
-                  image: AssetImage('assets/imagem2.png'),
+                Image(
+                  image: AssetImage('assets/imagem3.png'),
                   width: 100,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Adicione suas políticas de privacidade',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              Image(
-                image: AssetImage('assets/imagem1.png'),
-                width: 100,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Revise todas as regras da Apple antes de enviar',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF000000),
+                Text(
+                  'Capriche na descrição e nas imagens do App',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Image(
-                image: AssetImage('assets/imagem.png'),
-                width: 100,
-              ),
-            ],
+                Padding(
+                  padding: EdgeInsets.only(left: 40),
+                  child: Image(
+                    image: AssetImage('assets/imagem2.png'),
+                    width: 100,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Adicione suas políticas de privacidade',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF000000),
+                  ),
+                ),
+                Image(
+                  image: AssetImage('assets/imagem1.png'),
+                  width: 100,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Revise todas as regras da Apple antes de enviar',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF000000),
+                  ),
+                ),
+                Image(
+                  image: AssetImage('assets/imagem.png'),
+                  width: 100,
+                ),
+              ],
+            ),
           ),
         ),
       ),
