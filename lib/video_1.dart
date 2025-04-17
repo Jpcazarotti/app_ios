@@ -62,22 +62,9 @@ class _Video1State extends State<Video1> {
               ),
               centerTitle: true,
             ),
-      body: OrientationBuilder(builder: (context, orientation) {
-        final isLandscape = orientation == Orientation.landscape;
-
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (isLandscape) {
-            SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-          } else {
-            SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-          }
-        });
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 5),
+      body: _isFullScreen
+          ? Container(
+              color: Colors.black,
               child: YoutubePlayer(
                 controller: _controller,
                 showVideoProgressIndicator: true,
@@ -89,50 +76,66 @@ class _Video1State extends State<Video1> {
                   backgroundColor: Colors.white38,
                 ),
               ),
+            )
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: YoutubePlayer(
+                      controller: _controller,
+                      showVideoProgressIndicator: true,
+                      progressIndicatorColor: Colors.red,
+                      progressColors: const ProgressBarColors(
+                        playedColor: Color(0xff007aff),
+                        handleColor: Color(0xff007aff),
+                        bufferedColor: Color(0xFF99BCE2),
+                        backgroundColor: Colors.white38,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Text(
+                      "Criando a conta Desenvolvedor Apple",
+                      style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 35),
+                    child: Text(
+                      "Pontos Importantes:",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 35),
+                    child: SizedBox(
+                      height: 300,
+                      child: ListView(
+                        children: [
+                          listItem("Criar um ID Apple (Apple ID)"),
+                          listItem("Acessar o site do Apple Developer"),
+                          listItem("Iniciar o processo de inscrição"),
+                          listItem("Escolher o tipo de conta"),
+                          listItem("Preencher as informações solicitadas"),
+                          listItem("Aceitar os termos e condições"),
+                          listItem("Pagar a taxa anual (582 reais)"),
+                          listItem("Aguardar aprovação"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            if (!isLandscape) ...[
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Text(
-                  "Criando a conta Desenvolvedor Apple",
-                  style: TextStyle(
-                    fontSize: 21,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 35),
-                child: Text(
-                  "Pontos Importantes:",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 35),
-                child: SizedBox(
-                  height: 300,
-                  child: ListView(
-                    children: [
-                      listItem("Criar um ID Apple (Apple ID)"),
-                      listItem("Acessar o site do Apple Developer"),
-                      listItem("Iniciar o processo de inscrição"),
-                      listItem("Escolher o tipo de conta"),
-                      listItem("Preencher as informações solicitadas"),
-                      listItem("Aceitar os termos e condições"),
-                      listItem("Pagar a taxa anual (582 reias)"),
-                      listItem("Aguardar aprovação"),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ],
-        );
-      }),
       floatingActionButton: AnimatedOpacity(
         duration: const Duration(milliseconds: 300),
         opacity: _isFullScreen ? 0.0 : 1.0,

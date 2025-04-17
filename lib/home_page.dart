@@ -110,21 +110,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Container(
             color: Colors.black.withOpacity(0.7),
           ),
-          const Positioned(
-            top: 60,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Text(
-                "Publicando na App Store",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.blue,
+          if (MediaQuery.of(context).orientation == Orientation.portrait)
+            const Positioned(
+              top: 60,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text(
+                  "Publicando na App Store",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.blue,
+                  ),
                 ),
               ),
             ),
-          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

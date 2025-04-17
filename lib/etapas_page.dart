@@ -46,11 +46,13 @@ class EtapasPage extends StatelessWidget {
                 AppBar().preferredSize.height -
                 MediaQuery.of(context).padding.top,
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Center(
+          child: SizedBox(
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
                     'Registre-se no site Apple Developer',
