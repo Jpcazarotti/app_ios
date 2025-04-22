@@ -39,11 +39,21 @@ class _Video1State extends State<Video1> {
         });
       }
     });
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     super.dispose();
   }
 
@@ -98,7 +108,7 @@ class _Video1State extends State<Video1> {
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Text(
-                      "Criando a conta Desenvolvedor Apple",
+                      "Criando a conta Desenvolvedor da Apple",
                       style: TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.w600,
@@ -118,18 +128,24 @@ class _Video1State extends State<Video1> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 35),
                     child: SizedBox(
-                      height: 300,
-                      child: ListView(
-                        children: [
-                          listItem("Criar um ID Apple (Apple ID)"),
-                          listItem("Acessar o site do Apple Developer"),
-                          listItem("Iniciar o processo de inscrição"),
-                          listItem("Escolher o tipo de conta"),
-                          listItem("Preencher as informações solicitadas"),
-                          listItem("Aceitar os termos e condições"),
-                          listItem("Pagar a taxa anual (582 reais)"),
-                          listItem("Aguardar aprovação"),
-                        ],
+                      height: 330,
+                      child: Card(
+                        elevation: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: ListView(
+                            children: [
+                              listItem("Criar um ID Apple (Apple ID)"),
+                              listItem("Acessar o site do Apple Developer"),
+                              listItem("Iniciar o processo de inscrição"),
+                              listItem("Escolher o tipo de conta"),
+                              listItem("Preencher as informações solicitadas"),
+                              listItem("Aceitar os termos e condições"),
+                              listItem("Pagar a taxa anual (582 reais)"),
+                              listItem("Aguardar aprovação"),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -140,46 +156,56 @@ class _Video1State extends State<Video1> {
         duration: const Duration(milliseconds: 300),
         opacity: _isFullScreen ? 0.0 : 1.0,
         child: !_isFullScreen
-            ? Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black45,
-                        blurRadius: 6,
-                        offset: Offset(0, 2),
+            ? SizedBox(
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const SizedBox(
+                      width: 75,
+                      height: 75,
+                    ),
+                    Container(
+                      width: 75,
+                      height: 75,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 6,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Video2(),
+                      child: FloatingActionButton(
+                        heroTag: "btnGo",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Video2(),
+                            ),
+                          );
+                        },
+                        backgroundColor: const Color(0xff007aff),
+                        foregroundColor: Colors.blueGrey.shade100,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
                         ),
-                      );
-                    },
-                    backgroundColor: const Color(0xff007aff),
-                    foregroundColor: const Color(0xFF24333D),
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                        child: const Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          size: 60,
+                        ),
+                      ),
                     ),
-                    child: const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      size: 60,
-                    ),
-                  ),
+                  ],
                 ),
               )
             : null,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -187,20 +213,25 @@ class _Video1State extends State<Video1> {
 Widget listItem(String text) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 4.0),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    child: Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.only(top: 7),
-          child: Icon(Icons.circle, size: 10, color: Colors.green),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 7),
+              child: Icon(Icons.circle, size: 10, color: Colors.green),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                text,
+                style: const TextStyle(fontSize: 17),
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 17),
-          ),
-        ),
+        const Divider(),
       ],
     ),
   );

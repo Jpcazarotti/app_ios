@@ -70,10 +70,25 @@ class EtapasPage extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Card(
-                      child: Image(
-                        image: AssetImage('assets/imagem6.png'),
-                        width: 100,
+                    child: Container(
+                      width: 160,
+                      height: 110,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 4,
+                            offset: Offset(1, 3),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Image(
+                          image: AssetImage('assets/imagem6.png'),
+                          width: 100,
+                        ),
                       ),
                     ),
                   ),
@@ -96,9 +111,26 @@ class EtapasPage extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Image(
-                      image: AssetImage('assets/imagem5.png'),
-                      width: 100,
+                    child: Container(
+                      width: 160,
+                      height: 110,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 4,
+                            offset: Offset(1, 3),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Image(
+                          image: AssetImage('assets/imagem5.png'),
+                          width: 100,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -121,9 +153,26 @@ class EtapasPage extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Image(
-                      image: AssetImage('assets/imagem4.png'),
-                      width: 100,
+                    child: Container(
+                      width: 160,
+                      height: 110,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 4,
+                            offset: Offset(1, 3),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Image(
+                          image: AssetImage('assets/imagem4.png'),
+                          width: 100,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -137,20 +186,34 @@ class EtapasPage extends StatelessWidget {
                       color: Color(0xFF000000),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Video4(),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Video4(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 160,
+                      height: 110,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black45,
+                            blurRadius: 4,
+                            offset: Offset(1, 3),
                           ),
-                        );
-                      },
-                      child: const Image(
-                        image: AssetImage('assets/icon-app.png'),
-                        width: 100,
+                        ],
+                      ),
+                      child: const Center(
+                        child: Image(
+                          image: AssetImage('assets/icon-app.png'),
+                          width: 100,
+                        ),
                       ),
                     ),
                   ),
