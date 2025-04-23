@@ -79,7 +79,7 @@ class _ParabensPageState extends State<ParabensPage>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Image(
-                    image: AssetImage('assets/icon-app.png'),
+                    image: AssetImage('assets/logo_app.png'),
                     width: 140,
                   ),
                   const SizedBox(height: 130),

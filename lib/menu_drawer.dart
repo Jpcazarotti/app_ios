@@ -19,7 +19,7 @@ class MenuDrawer extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Image.asset(
-                'assets/icon-app.png',
+                'assets/logo_app.png',
               ),
             ),
           ),
